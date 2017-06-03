@@ -1,6 +1,43 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<br />
+
+
+   
+        @foreach(var gra in ViewBag.Gry)
+        {
+            if (gra.Zdjecie == null)
+            {
+               
+                    <div class="row">
+                        <!--  @gra.Tytul, @gra.Gatunek <br/> -->
+                        <!--   <img src="~/Content/Images/Heroes.jpg" width="200" />  -->
+                        <img src="/Content/Images/Black.jpg" width="300" style="float:left;" />  @gra.Tytul @gra.Gatunek 
+                    </div>
+                    <br />
+
+            }
+            else
+            {
+
+                    <div class="row">
+                        <img src="@gra.Zdjecie" width="300" style="float:left;" /> @gra.Tytul <br/>
+                        <ul> 
+                            <LI>@gra.Gatunek</LI>
+                            <li>@gra.Platforma</li>
+                        </ul> 
+                       
+                    </div>
+                    <br />
+
+            }
+
+        }
+    
+
+
+
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>

@@ -8,9 +8,9 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KatalogGier.Models
 {
-
-        public class Gra
-        {
+    public class Gra
+    {
+        
             [BsonId]
             public ObjectId ID { get; set; }
 
@@ -34,19 +34,10 @@ namespace KatalogGier.Models
             public string Platforma { get; set; }
 
             [BsonElement("recenzja")]
-            public string Recenzja { get; set; }
+            public List<Recenzja> Recenzja { get; set; }
 
-            [BsonElement("nazwa_uzytkownika")]
-            public string Nazwa_uzytkownika { get; set; }
-
-            [BsonElement("data_wstawienia")]
-            [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
-            public DateTime Data_wstawienia { get; set; }
-
-            [BsonElement("ocena")]
-            public int Ocena { get; set; }
-
-            [BsonElement("tresc")]
-            public string Tresc { get; set; }
-        }
+            [BsonElement("zdjecie")]
+            public string Zdjecie { get; set; }
+        
+    }
 }
