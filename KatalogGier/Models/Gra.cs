@@ -36,7 +36,8 @@ namespace KatalogGier.Models
             [BsonElement("recenzja")]
             public List<Recenzja> Recenzja { get; set; }
 
-            
+            [BsonElement("zdjecie")]
+            public string Zdjecie { get; set; }
         
     }
 }

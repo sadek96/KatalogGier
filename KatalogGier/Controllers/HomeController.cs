@@ -13,10 +13,13 @@ namespace KatalogGier.Controllers
     public class HomeController : Controller
     {
        
-
+      //  string a = "~/Content/Images/Heroes.jpg";
         public ActionResult Index()
         {
-            var gry = new List<Gra> { new Gra { Tytul = "Heroes III" } };
+            List<Gra> gry = new List<Gra> {
+                new Gra { Tytul = "Heroes III", Zdjecie = null },
+                new Gra { Tytul = "Diablo II", Gatunek = "HackAndSlash" , Zdjecie = "/Content/Images/Heroes.jpg"}
+            };
 
             ViewBag.Gry = gry;
 
