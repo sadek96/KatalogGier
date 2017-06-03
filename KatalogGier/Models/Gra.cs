@@ -8,9 +8,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KatalogGier.Models
 {
-    public class Gra
-    {
-        public class Produkt
+
+        public class Gra
         {
             [BsonId]
             public ObjectId ID { get; set; }
@@ -50,5 +49,4 @@ namespace KatalogGier.Models
             [BsonElement("tresc")]
             public string Tresc { get; set; }
         }
-    }
 }
