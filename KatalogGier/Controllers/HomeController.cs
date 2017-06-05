@@ -17,7 +17,7 @@ namespace KatalogGier.Controllers
         public ActionResult Index()
         {
             List<Gra> gry = new List<Gra> {
-                new Gra { Tytul = "Heroes III", Zdjecie = null },
+                new Gra { Tytul = "Heroes III", Zdjecie = null, Platforma = "PC" },
                 new Gra { Tytul = "Diablo II", Gatunek = "HackAndSlash" , Zdjecie = "/Content/Images/Heroes.jpg"}
             };
 
