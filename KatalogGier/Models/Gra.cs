@@ -8,7 +8,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KatalogGier.Models
 {
-    public class Gra
+    public class Gra:BsonDocument
     {
         
             [BsonId]
@@ -18,7 +18,7 @@ namespace KatalogGier.Models
             public string Tytul { get; set; }
 
             [BsonElement("gatunek")]
-            public string Gatunek { get; set; }
+            public string[] Gatunek { get; set; }
 
             [BsonElement("producent")]
             public string Producent { get; set; }
@@ -27,14 +27,13 @@ namespace KatalogGier.Models
             public string Wydawca { get; set; }
 
             [BsonElement("data_premiery")]
-            [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
-            public DateTime Data_premiery { get; set; }
+            public string Data_premiery { get; set; }
 
             [BsonElement("platforma")]
-            public string Platforma { get; set; }
+            public string[] Platforma { get; set; }
 
             [BsonElement("recenzja")]
-            public List<Recenzja> Recenzja { get; set; }
+            public List<Recenzja> Recenzje { get; set; }
 
             [BsonElement("zdjecie")]
             public string Zdjecie { get; set; }

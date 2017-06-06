@@ -5,32 +5,46 @@
 
 
    
-        @foreach(var gra in ViewBag.Gry)
+        @foreach (var gra in ViewBag.Gry)
         {
             if (gra.Zdjecie == null)
             {
-               
-                    <div class="row">
-                        <!--  @gra.Tytul, @gra.Gatunek <br/> -->
-                        <!--   <img src="~/Content/Images/Heroes.jpg" width="200" />  -->
-                        <img src="/Content/Images/Black.jpg" width="300" style="float:left;" />  @gra.Tytul @gra.Gatunek 
-                    </div>
-                    <br />
+
+                <div class="row">
+                    <img src="/Content/Images/Black.jpg" width="300" style="float:left; margin: 10px;" />
+                    <p>
+                        <a href="https://go.microsoft.com/fwlink/?LinkId=301865">
+                            <div style="background-color:lavender">
+                                <h4><font color="black"> @gra.Tytul</font></h4>
+                            </div>
+                        </a>
+                    </p>
+                    Gatunek: @gra.Gatunek <br />
+                    Platforma: @gra.Platforma <br />
+                    Producent: @gra.Producent <br />
+                    Wydawca: @gra.Wydawca <br />
+                    Data_premiery: @gra.Data_premiery <br />
+
+                </div>
 
             }
             else
             {
 
-                    <div class="row">
-                        <img src="@gra.Zdjecie" width="300" style="float:left;" /> @gra.Tytul <br/>
-                        <ul> 
-                            <LI>@gra.Gatunek</LI>
-                            <li>@gra.Platforma</li>
-                        </ul> 
-                       
-                    </div>
-                    <br />
+            <div class="row">
+                <img src="@gra.Zdjecie" width="300" style="float:left; margin: 10px;" />
+                <p><a href="https://go.microsoft.com/fwlink/?LinkId=301865">
+                    <div style="background-color:lavender"> 
+                        <h4><font color="black"> @gra.Tytul</font></h4>
+                    </div></a>
+                </p>
+                    Gatunek: @gra.Gatunek <br />
+                    Platforma: @gra.Platforma <br />
+                    Producent: @gra.Producent <br />
+                    Wydawca: @gra.Wydawca <br />
+                    Data_premiery: @gra.Data_premiery <br />
 
+            </div>
             }
 
         }
