@@ -47,7 +47,7 @@ namespace KatalogGier.Models
                 {
                     "PC","PS3","X360"
                 },
-                Zdjecie = "FarCry3PC.jpg",
+                Zdjecie = "/Content/Images/FarCry3PC.jpg",
                 Recenzje = new List<Recenzja>()
                 {
                     new Recenzja()
@@ -75,7 +75,7 @@ namespace KatalogGier.Models
                 {
                     "PC","PS4","XONE"
                 },
-                Zdjecie = "MountAndBladeWarbandPC.jpg"
+                Zdjecie = "/Content/Images/MountAndBladeWarbandPC.jpg"
             }
         };
 
@@ -97,15 +97,16 @@ namespace KatalogGier.Models
 
         public IEnumerable<Gra> GetAllGames()
         {
-            if (GamesCollection.Count(new Gra()) > 0)
+            var filter = Builders<Gra>.Filter.Ne<Gra>("tytul", null);
+
+            if (GamesCollection.Count(filter) > 0)
             {
                 _gamesList.Clear();
-                var filter = Builders<Gra>.Filter.Ne<Gra>("tytul",null);
-                var games = GamesCollection.Find(filter).ToList();
+                var games = GamesCollection.AsQueryable();
 
                 if (games.Count() > 0)
                 {
-                    foreach(Gra game in games)
+                    foreach(var game in games)
                     {
                         _gamesList.Add(game);
                     }

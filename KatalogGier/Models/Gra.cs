@@ -8,7 +8,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace KatalogGier.Models
 {
-    public class Gra:BsonDocument
+    public class Gra
     {
         
             [BsonId]

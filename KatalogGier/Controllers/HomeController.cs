@@ -12,22 +12,14 @@ namespace KatalogGier.Controllers
 {
     public class HomeController : Controller
     {
-        protected static IMongoClient _client;
-        protected static IMongoDatabase _database;
-
+        public KatalogGierRepository Context = new KatalogGierRepository();
 
        
       //  string a = "~/Content/Images/Heroes.jpg";
         public ActionResult Index()
         {
-            List<Gra> gry = new List<Gra> {
-                new Gra { Tytul = "Heroes III", Zdjecie = null, Platforma = new string[]{"PC" } },
-                new Gra { Tytul = "Diablo II", Gatunek = new string[] {"HackAndSlash" } , Zdjecie = "/Content/Images/Heroes.jpg"}
-            };
 
-            ViewBag.Gry = gry;
-
-            return View();
+            return View("Index",Context.GetAllGames());
         }
 
         public ActionResult About()

@@ -1,104 +1,58 @@
-﻿@{
+﻿@model IEnumerable<KatalogGier.Models.Gra>
+@{
     ViewBag.Title = "Home Page";
 }
 <br />
-
-
-   
-        @foreach (var gra in ViewBag.Gry)
+<div class="container">
+    @if(Model != null)
+    {
+        foreach (var gra in Model)
         {
-            if (gra.Zdjecie == null)
-            {
-
-                <div class="row">
-                    <img src="/Content/Images/Black.jpg" width="300" style="float:left; margin: 10px;" />
-                    <p>
-                        <a href="https://go.microsoft.com/fwlink/?LinkId=301865">
-                            <div style="background-color:lavender">
-                                <h4><font color="black"> @gra.Tytul</font></h4>
-                            </div>
-                        </a>
-                    </p>
-                    @if(gra.Platforma != null){
-                    foreach (var g in gra.Platforma)
-                    {
-                        <div> Platforma: @g</div>
-                    }}
-                    @if (gra.Gatunek != null)
-                    {
-                        foreach (var g in gra.Gatunek)
-                        {
-                            <div> Gatunek: @g</div>
-                        }
-                    }
-                    Producent: @gra.Producent <br />
-                    Wydawca: @gra.Wydawca <br />
-                    Data_premiery: @gra.Data_premiery <br />
-
-                </div>
-
-            }
-            else
-            {
-
             <div class="row">
-                <img src="@gra.Zdjecie" width="300" style="float:left; margin: 10px;" />
-                <p><a href="https://go.microsoft.com/fwlink/?LinkId=301865">
-                    <div style="background-color:lavender"> 
-                        <h4><font color="black"> @gra.Tytul</font></h4>
-                    </div></a>
+                @if (gra.Zdjecie != null)
+                {
+                    <img src="@gra.Zdjecie" style="float:left; margin: 10px;" />
+                }
+                else
+                {
+                    <img src="/Content/Images/Black.jpg" width="300" style="float:left; margin: 10px;" />
+                }
+
+                <p>
+                    <a href="https://go.microsoft.com/fwlink/?LinkId=301865">
+                        <div style="background-color:lavender">
+                            <h4><font color="black"> @gra.Tytul</font></h4>
+                        </div>
+                    </a>
                 </p>
-                    @if (gra.Platforma != null)
+                @if (gra.Platforma != null)
                     {
-                        foreach (var g in gra.Platforma)
+                    <div>Platforma:
+                        @foreach (var g in gra.Platforma)
                         {
-                            <div> Platforma: @g</div>
+                            <text>@g ,</text>
                         }
-                    }
-                    @if (gra.Gatunek != null)
+                    </div>
+                }
+                @if (gra.Gatunek != null)
                     {
-                        foreach (var g in gra.Gatunek)
+                    <div>Gatunek:
+                        @foreach (var g in gra.Gatunek)
                         {
-                            <div> Gatunek: @g</div>
+                            <text>@g ,</text>
                         }
-                    }
-                    Producent: @gra.Producent <br />
-                    Wydawca: @gra.Wydawca <br />
-                    Data_premiery: @gra.Data_premiery <br />
-
+                    </div>
+                }
+                Producent: @gra.Producent <br />
+                Wydawca: @gra.Wydawca <br />
+                Data premiery: @gra.Data_premiery <br/>
             </div>
-            }
-
         }
-    
-
-
-
-
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    }
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+
+
+
+
