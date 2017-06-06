@@ -44,5 +44,12 @@ namespace KatalogGier.Controllers
             return View();
         }
 
+        public ActionResult Recenzje()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

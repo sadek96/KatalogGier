@@ -19,8 +19,18 @@
                             </div>
                         </a>
                     </p>
-                    Gatunek: @gra.Gatunek <br />
-                    Platforma: @gra.Platforma <br />
+                    @if(gra.Platforma != null){
+                    foreach (var g in gra.Platforma)
+                    {
+                        <div> Platforma: @g</div>
+                    }}
+                    @if (gra.Gatunek != null)
+                    {
+                        foreach (var g in gra.Gatunek)
+                        {
+                            <div> Gatunek: @g</div>
+                        }
+                    }
                     Producent: @gra.Producent <br />
                     Wydawca: @gra.Wydawca <br />
                     Data_premiery: @gra.Data_premiery <br />
@@ -38,8 +48,20 @@
                         <h4><font color="black"> @gra.Tytul</font></h4>
                     </div></a>
                 </p>
-                    Gatunek: @gra.Gatunek <br />
-                    Platforma: @gra.Platforma <br />
+                    @if (gra.Platforma != null)
+                    {
+                        foreach (var g in gra.Platforma)
+                        {
+                            <div> Platforma: @g</div>
+                        }
+                    }
+                    @if (gra.Gatunek != null)
+                    {
+                        foreach (var g in gra.Gatunek)
+                        {
+                            <div> Gatunek: @g</div>
+                        }
+                    }
                     Producent: @gra.Producent <br />
                     Wydawca: @gra.Wydawca <br />
                     Data_premiery: @gra.Data_premiery <br />
