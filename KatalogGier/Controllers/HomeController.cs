@@ -50,10 +50,10 @@ namespace KatalogGier.Controllers
             _database = _client.GetDatabase("mydb");
         }
 
-        public List<Models.KatalogGier> DBGry()
+        public List<Gra> DBGry()
         {
-            IMongoCollection<KatalogGier> KolekcjaGier = _database.GetCollection<KatalogGier>("Katalog_gier");
-            List<Models.KatalogGier> ListaGier = IMongoCollectionExtensions.Find<Models.KatalogGier>(KolekcjaGier, new BsonDocument()).ToList();
+            IMongoCollection<Gra> KolekcjaGier = _database.GetCollection<Gra>("Katalog_gier");
+            List<Gra> ListaGier = IMongoCollectionExtensions.Find<Gra>(KolekcjaGier, new BsonDocument()).ToList();
             return ListaGier;
         }
 
