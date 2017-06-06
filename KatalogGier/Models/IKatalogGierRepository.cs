@@ -15,5 +15,7 @@ namespace KatalogGier.Models
         Gra Add(Gra game);
         bool Update(ObjectId objectId, Gra game);
         bool Delete(ObjectId objectId);
+        Gra GetGameByTitle(string title);
+        List<Gra> SearchForGames(string text);
     }
 }

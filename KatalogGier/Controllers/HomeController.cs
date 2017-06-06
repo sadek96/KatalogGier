@@ -21,8 +21,8 @@ namespace KatalogGier.Controllers
         public ActionResult Index()
         {
             List<Gra> gry = new List<Gra> {
-                new Gra { Tytul = "Heroes III", Zdjecie = null, Platforma = "PC" },
-                new Gra { Tytul = "Diablo II", Gatunek = "HackAndSlash" , Zdjecie = "/Content/Images/Heroes.jpg"}
+                new Gra { Tytul = "Heroes III", Zdjecie = null, Platforma = new string[]{"PC" } },
+                new Gra { Tytul = "Diablo II", Gatunek = new string[] {"HackAndSlash" } , Zdjecie = "/Content/Images/Heroes.jpg"}
             };
 
             ViewBag.Gry = gry;
@@ -44,7 +44,5 @@ namespace KatalogGier.Controllers
             return View();
         }
 
-
-        
     }
 }

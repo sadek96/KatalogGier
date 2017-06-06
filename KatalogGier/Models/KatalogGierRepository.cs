@@ -157,5 +157,23 @@ namespace KatalogGier.Models
 
             return true;
         }
+
+        public Gra GetGameByTitle(string Title)
+        {
+            var filter = Builders<Gra>.Filter.Eq("tytul", Title);
+
+            Gra g = GamesCollection.Find(filter).First();
+
+            return g;
+        }
+
+        public List<Gra> SearchForGames(string text)
+        {
+            var filter = Builders<Gra>.Filter.Text(text);
+
+            List<Gra> list = GamesCollection.Find(filter).ToList();
+
+            return list;
+        }
     }
 }
