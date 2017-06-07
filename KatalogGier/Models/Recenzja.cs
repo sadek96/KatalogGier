@@ -7,7 +7,7 @@ using System.Web;
 
 namespace KatalogGier.Models
 {
-    public class Recenzja:BsonDocument
+    public class Recenzja
     {
         [BsonElement("nazwa_uzytkownika")]
         public string Nazwa_uzytkownika { get; set; }
