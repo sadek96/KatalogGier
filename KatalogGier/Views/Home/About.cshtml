@@ -17,13 +17,13 @@
 
         <p>
             <div style="background-color:lavender">
-                <h2>@Html.ActionLink(Model.Tytul, "About", "Home", new { Id = Model.ID }, new { @style = "color: black;" })</h2>
+                 <h2><b> @Model.Tytul</b> </h2>
             </div>
         </p>
         @if (Model.Platforma != null)
         {
             <div>
-                Platforma:
+                <b>Platforma: </b>
                 @foreach (var g in Model.Platforma)
                 {
                     <text>@g ,</text>
@@ -33,21 +33,21 @@
         @if (Model.Gatunek != null)
         {
             <div>
-                Gatunek:
+                <b>Gatunek: </b>
                 @foreach (var g in Model.Gatunek)
                 {
                     <text>@g ,</text>
                 }
             </div>
         }
-        Producent: @Model.Producent <br />
-        Wydawca: @Model.Wydawca <br />
-        Data premiery: @Model.Data_premiery <br />
+        <b>Producent: </b> @Model.Producent <br />
+        <b>Wydawca: </b> @Model.Wydawca <br />
+        <b>premiery: </b> @Model.Data_premiery <br />
     </div>
 
     <p>
         <div style="background-color:lavender">
-            <h3>Recenzje</h3>
+            <h2><b>Recenzje</b></h2>
         </div>
     </p>
 
@@ -60,11 +60,26 @@
         foreach(var r in Model.Recenzje)
         {
             <div class="row; container">
-                Nazwa użytkownika:  @r.Nazwa_uzytkownika    <br/>
-                Datw wstawienia:    @r.Data_wstawienia      <br/>
-                Ocena:  @r.Ocena    <br/>
-                Tresc:  @r.Tresc    <br/>
-            </div>
+                
+                    @if (r.Nazwa_uzytkownika == null)
+                    { 
+                    <b>Nazwa użytkownika: </b> <text>ANNYNOMAUS</text> <br/>
+                    <b>Datw wstawienia: </b>   @r.Data_wstawienia      <br />
+                    <font color="red"><b>Ocena:  @r.Ocena    </b></font><br />
+                    <div style="background-color:lavender">
+                    <b>Tresc: </b> <br /> @r.Tresc    <br />
+                    </div>
+                        }
+                        else
+                        {
+                        <b>Nazwa użytkownika: </b> @r.Nazwa_uzytkownika    <br />
+                        <b>Datw wstawienia: </b>   @r.Data_wstawienia      <br />
+                        <font color="red"><b>Ocena:  @r.Ocena    </b></font><br />
+                        <div style="background-color:lavender">
+                            <b>Tresc: </b> <br /> @r.Tresc    <br />
+                        </div>
+                        }
+                    </div>
 
             <hr/>
         }
