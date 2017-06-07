@@ -15,7 +15,7 @@
                 }
                 else
                 {
-                    <img src="/Content/Images/Black.jpg" style="float:left; margin: 10px;" />
+                    <img src="/Content/Images/Empty.jpg" style="float:left; margin: 10px;" />
                 }
 
                 <p>
@@ -44,7 +44,16 @@
                 Producent: @gra.Producent <br />
                 Wydawca: @gra.Wydawca <br />
                 Data premiery: @gra.Data_premiery <br/>
+                @if(gra.Recenzje != null)
+                {
+                    <text>Ilosc recenzji:@gra.Recenzje.Count </text>
+                }
+                else{ 
+                    <text>Ilosc recenzji: 0</text>
+}
             </div>
+
+            <hr/>
         }
     }
 </div>

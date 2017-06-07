@@ -180,7 +180,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\MountAndBladeWarbandPC.jpg" />
     <Content Include="Content\Images\FarCry3PC.jpg" />
-    <Content Include="Content\Images\Black.jpg" />
+    <Content Include="Content\Images\Empty.jpg" />
     <Content Include="Content\Images\Heroes.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
