@@ -20,7 +20,7 @@
 
                 <p>
                         <div style="background-color:lavender">
-                            <h2><font color="black">@Html.ActionLink(gra.Tytul,"Recenzje","Home") </font></h2>
+                            <h2>@Html.ActionLink(gra.Tytul, "About", "Home", new { Id = gra.Tytul }, new { @style = "color: black;" } )</h2>
                         </div>
                 </p>
                 @if (gra.Platforma != null)

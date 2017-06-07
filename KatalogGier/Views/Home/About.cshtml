@@ -1,7 +1,75 @@
-﻿@{
+﻿@model KatalogGier.Models.Gra
+@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+@if (Model != null)
+{
+    <div class="row">
+        @if (Model.Zdjecie != null)
+                {
+            <img src="@Model.Zdjecie" style="float:left; margin: 10px;" />
+        }
+        else
+        {
+            <img src="/Content/Images/Black.jpg" width="300" style="float:left; margin: 10px;" />
+        }
+
+        <p>
+            <div style="background-color:lavender">
+                <h2>@Html.ActionLink(Model.Tytul, "Recenzje", "Home", new { id = Model.ID }, new { @style = "color: black;" })</h2>
+            </div>
+        </p>
+        @if (Model.Platforma != null)
+        {
+            <div>
+                Platforma:
+                @foreach (var g in Model.Platforma)
+                {
+                    <text>@g ,</text>
+                }
+            </div>
+        }
+        @if (Model.Gatunek != null)
+        {
+            <div>
+                Gatunek:
+                @foreach (var g in Model.Gatunek)
+                {
+                    <text>@g ,</text>
+                }
+            </div>
+        }
+        Producent: @Model.Producent <br />
+        Wydawca: @Model.Wydawca <br />
+        Data premiery: @Model.Data_premiery <br />
+    </div>
+
+    <p>
+        <div style="background-color:lavender">
+            <h3>Recenzje</h3>
+        </div>
+    </p>
+
+    if (Model.Recenzje == null)
+    {
+        <div style="align-content:center">Brak recenzji do tej gry</div>
+    }
+    else
+    {
+        foreach(var r in Model.Recenzje)
+        {
+            <div class="row; container">
+                Nazwa użytkownika:  @r.Nazwa_uzytkownika    <br/>
+                Datw wstawienia:    @r.Data_wstawienia      <br/>
+                Ocena:  @r.Ocena    <br/>
+                Tresc:  @r.Tresc    <br/>
+            </div>
+        }
+    }
+}
+else
+{
+    <text>Coś chyba poszło nie tak. :(</text>
+}
+
