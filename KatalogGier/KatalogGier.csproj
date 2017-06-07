@@ -179,6 +179,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Logo.png" />
     <Content Include="Content\Images\MountAndBladeWarbandPC.jpg" />
     <Content Include="Content\Images\FarCry3PC.jpg" />
     <Content Include="Content\Images\Empty.jpg" />
