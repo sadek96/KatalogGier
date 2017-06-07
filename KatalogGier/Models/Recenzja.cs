@@ -21,4 +21,6 @@ namespace KatalogGier.Models
         [BsonElement("tresc")]
         public string Tresc { get; set; }
     }
+
 }
+

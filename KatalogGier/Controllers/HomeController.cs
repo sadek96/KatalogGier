@@ -40,7 +40,7 @@ namespace KatalogGier.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return RedirectToAction("Index");
+            return RedirectToAction("About");
         }
 
     }
