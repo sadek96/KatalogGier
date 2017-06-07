@@ -183,6 +183,9 @@
     <Content Include="Content\Images\FarCry3PC.jpg" />
     <Content Include="Content\Images\Empty.jpg" />
     <Content Include="Content\Images\Heroes.jpg" />
+    <Content Include="Content\Images\star_empty.png" />
+    <Content Include="Content\Images\star_full.png" />
+    <Content Include="Content\Images\star_highlight.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

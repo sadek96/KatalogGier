@@ -25,7 +25,7 @@
                 </p>
                 @if (gra.Platforma != null)
                     {
-                    <div>Platforma:
+                    <div><b> Platforma: </b>
                         @foreach (var g in gra.Platforma)
                         {
                             <text>@g ,</text>
@@ -34,19 +34,20 @@
                 }
                 @if (gra.Gatunek != null)
                     {
-                    <div>Gatunek:
+                    <div><b> Gatunek: </b>
                         @foreach (var g in gra.Gatunek)
                         {
                             <text>@g ,</text>
                         }
                     </div>
                 }
-                Producent: @gra.Producent <br />
-                Wydawca: @gra.Wydawca <br />
-                Data premiery: @gra.Data_premiery <br/>
+
+                <b> Producent: </b> @gra.Producent <br />
+                <b>Wydawca:</b> @gra.Wydawca <br />
+                <b>Data premiery:</b> @gra.Data_premiery <br/>
                 @if(gra.Recenzje != null)
                 {
-                    <text>Ilosc recenzji:@gra.Recenzje.Count </text>
+                    <text><b>Ilosc recenzji:@gra.Recenzje.Count </b></text>
                 }
                 else{ 
                     <text>Ilosc recenzji: 0</text>

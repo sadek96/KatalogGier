@@ -17,7 +17,7 @@
 
         <p>
             <div style="background-color:lavender">
-                <h2>@Html.ActionLink(Model.Gra.Tytul, "About", "Home", new { Id = Model.Gra.ID }, new { @style = "color: black;" })</h2>
+                 <h2><b> @Model.Tytul</b> </h2>
             </div>
         </p>
         @if (Model.Gra.Platforma != null)
@@ -60,11 +60,26 @@
         foreach(var r in Model.Gra.Recenzje)
         {
             <div class="row; container">
-                Nazwa użytkownika:  @r.Nazwa_uzytkownika    <br/>
-                Datw wstawienia:    @r.Data_wstawienia      <br/>
-                Ocena:  @r.Ocena    <br/>
-                Tresc:  @r.Tresc    <br/>
-            </div>
+                
+                    @if (r.Nazwa_uzytkownika == null)
+                    { 
+                    <b>Nazwa użytkownika: </b> <text>ANNYNOMAUS</text> <br/>
+                    <b>Datw wstawienia: </b>   @r.Data_wstawienia      <br />
+                    <font color="red"><b>Ocena:  @r.Ocena    </b></font><br />
+                    <div style="background-color:lavender">
+                    <b>Tresc: </b> <br /> @r.Tresc    <br />
+                    </div>
+                        }
+                        else
+                        {
+                        <b>Nazwa użytkownika: </b> @r.Nazwa_uzytkownika    <br />
+                        <b>Datw wstawienia: </b>   @r.Data_wstawienia      <br />
+                        <font color="red"><b>Ocena:  @r.Ocena    </b></font><br />
+                        <div style="background-color:lavender">
+                            <b>Tresc: </b> <br /> @r.Tresc    <br />
+                        </div>
+                        }
+                    </div>
 
             <hr/>
         }
