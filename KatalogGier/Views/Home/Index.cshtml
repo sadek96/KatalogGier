@@ -15,13 +15,12 @@
                 }
                 else
                 {
-                    <img src="/Content/Images/Black.jpg" width="300" style="float:left; margin: 10px;" />
+                    <img src="/Content/Images/Empty.jpg" style="float:left; margin: 10px;" />
                 }
 
                 <p>
-
                         <div style="background-color:lavender">
-                            <h2><font color="black">@Html.ActionLink( gra.Tytul,"Recenzje","Home", new { @style = "color:black;" }) </font></h2>
+                            <h2>@Html.ActionLink(gra.Tytul, "About", "Home", new { Id = gra.ID }, new { @style = "color: black;" } )</h2>
                         </div>
                 </p>
                 @if (gra.Platforma != null)
@@ -45,7 +44,16 @@
                 Producent: @gra.Producent <br />
                 Wydawca: @gra.Wydawca <br />
                 Data premiery: @gra.Data_premiery <br/>
+                @if(gra.Recenzje != null)
+                {
+                    <text>Ilosc recenzji:@gra.Recenzje.Count </text>
+                }
+                else{ 
+                    <text>Ilosc recenzji: 0</text>
+}
             </div>
+
+            <hr/>
         }
     }
 </div>

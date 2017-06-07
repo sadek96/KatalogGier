@@ -14,19 +14,12 @@ namespace KatalogGier.Controllers
     {
         public KatalogGierRepository Context = new KatalogGierRepository();
 
-       
-      //  string a = "~/Content/Images/Heroes.jpg";
+
+        //  string a = "~/Content/Images/Heroes.jpg";
         public ActionResult Index()
         {
 
-            return View("Index",Context.GetAllGames());
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View("Index", Context.GetAllGames());
         }
 
         public ActionResult Contact()
@@ -36,12 +29,12 @@ namespace KatalogGier.Controllers
             return View();
         }
 
-        public ActionResult Recenzje()
+        public ActionResult About(string Id)
         {
             ViewBag.Message = "Your contact page.";
 
-            return RedirectToAction("About");
-        }
+                return View(Context.GetGameById(new ObjectId(Id)));
 
+        }
     }
 }
