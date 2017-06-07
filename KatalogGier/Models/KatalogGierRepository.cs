@@ -47,7 +47,7 @@ namespace KatalogGier.Models
                 {
                     "PC","PS3","X360"
                 },
-                Zdjecie = "/Content/Images/FarCry3PC.jpg",
+                Zdjecie = "FarCry3PC.jpg",
                 Recenzje = new List<Recenzja>()
                 {
                     new Recenzja()
@@ -75,7 +75,7 @@ namespace KatalogGier.Models
                 {
                     "PC","PS4","XONE"
                 },
-                Zdjecie = "/Content/Images/MountAndBladeWarbandPC.jpg"
+                Zdjecie = "MountAndBladeWarbandPC.jpg"
             }
         };
 

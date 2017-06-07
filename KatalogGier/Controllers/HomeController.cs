@@ -16,7 +16,6 @@ namespace KatalogGier.Controllers
         public KatalogGierRepository Context = new KatalogGierRepository();
 
 
-        //  string a = "~/Content/Images/Heroes.jpg";
         public ActionResult Index(string text = null)
         {
 
