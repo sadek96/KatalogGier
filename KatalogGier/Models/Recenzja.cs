@@ -10,7 +10,6 @@ namespace KatalogGier.Models
 {
     public class Recenzja
     {
-        [BsonRequired]
         [BsonElement("nazwa_uzytkownika")]
         public string Nazwa_uzytkownika { get; set; }
 

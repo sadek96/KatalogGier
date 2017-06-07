@@ -62,23 +62,31 @@
             <div class="row; container">
                 
                     @if (r.Nazwa_uzytkownika == null)
-                    { 
-                    <b>Nazwa użytkownika: </b> <text>ANNYNOMAUS</text> <br/>
+                    {
+                    <b>Nazwa użytkownika: </b> <text>Anonimowy</text> <br/>
+                    }
+                    else
+                    {
+                        <b>Nazwa użytkownika: </b> @r.Nazwa_uzytkownika    <br />
+                    }
                     <b>Datw wstawienia: </b>   @r.Data_wstawienia      <br />
-                    <font color="red"><b>Ocena:  @r.Ocena    </b></font><br />
+                    <b>Ocena: </b>
+                        @for (var i = 0; i < 10; i++)
+                        {
+                            if (i < r.Ocena)
+                            {
+                                <img src="/Content/Images/star_full.png"/>
+                            }
+                            else
+                            {
+                                <img src="/Content/Images/star_empty.png" />
+                            }
+                        }
+                       <br />
                     <div style="background-color:lavender">
                     <b>Tresc: </b> <br /> @r.Tresc    <br />
                     </div>
-                        }
-                        else
-                        {
-                        <b>Nazwa użytkownika: </b> @r.Nazwa_uzytkownika    <br />
-                        <b>Datw wstawienia: </b>   @r.Data_wstawienia      <br />
-                        <font color="red"><b>Ocena:  @r.Ocena    </b></font><br />
-                        <div style="background-color:lavender">
-                            <b>Tresc: </b> <br /> @r.Tresc    <br />
-                        </div>
-                        }
+                        
                     </div>
 
             <hr/>

@@ -170,11 +170,26 @@ namespace KatalogGier.Models
 
         public List<Gra> SearchForGames(string text)
         {
-            var filter = Builders<Gra>.Filter.Text(text);
 
-            List<Gra> list = GamesCollection.Find(filter).ToList();
 
-            return list;
+            List<Gra> list = new List<Gra>();
+
+            if(text=="" || text == null)
+            {
+                var filter = Builders<Gra>.Filter.Empty;
+                list = GamesCollection.Find(filter).ToList();
+
+                return list;
+            }
+            else
+            {
+                var filter = Builders<Gra>.Filter.Text(text);
+
+                list = GamesCollection.Find(filter).ToList();
+                return list;
+            }
+           
+            
         }
     }
 }

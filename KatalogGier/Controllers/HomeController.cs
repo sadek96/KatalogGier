@@ -17,10 +17,11 @@ namespace KatalogGier.Controllers
 
 
         //  string a = "~/Content/Images/Heroes.jpg";
-        public ActionResult Index()
+        public ActionResult Index(string text = null)
         {
 
-            return View("Index", Context.GetAllGames());
+
+            return View("Index", Context.SearchForGames(text));
         }
 
         public ActionResult Contact()

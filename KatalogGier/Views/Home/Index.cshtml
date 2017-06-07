@@ -3,6 +3,88 @@
     ViewBag.Title = "Home Page";
 }
 <br />
+
+@{
+    var param = Request.Params["text"];
+    if (param == null || param == "")
+    {
+        var srednieOceny = new int[Model.Count()];
+        var topOceny = new int[3];
+        var topPozycje = new int[3];
+        for (var i = 0; i < Model.Count(); i++)
+        {
+            var count = 0;
+            var sum = 0;
+            if (Model.ElementAt(i).Recenzje != null)
+            {
+                foreach (var recenzyja in Model.ElementAt(i).Recenzje)
+                {
+                    count++;
+                    sum += recenzyja.Ocena;
+                }
+                srednieOceny[i] = sum / count;
+            }
+            else
+            {
+                srednieOceny[i] = 0;
+            }
+
+        }
+
+        topOceny = srednieOceny.OrderByDescending(i1 => i1).Take(3).ToArray();
+
+        for (var j = 0; j < srednieOceny.Length; j++)
+        {
+            foreach (int o in topOceny)
+            {
+                if (srednieOceny[j] == o)
+                {
+                    if (topPozycje[0] == 0)
+                    {
+                        topPozycje[0] = j;
+                    }
+                    else if (topPozycje[1] == 0)
+                    {
+                        topPozycje[1] = j;
+                    }
+                    else
+                    {
+                        topPozycje[2] = j;
+                    }
+                }
+            }
+        }
+
+        <h1><b>TOP 3 GRY</b></h1>
+
+        <div class="row">
+            @foreach (int k in topPozycje)
+            {
+                var g = Model.ElementAt(k);
+
+                <div class="col-md-4 col-centered">
+                    
+                        @if (g.Zdjecie != null)
+                        {
+                            <img src="@g.Zdjecie" style="text-align:center"/>
+                        }
+                        else
+                        {
+                            <img src="/Content/Images/Empty.jpg" />
+                        }
+                        <br/>
+                    <h2 style="text-align:center">@Html.ActionLink(g.Tytul, "About", "Home", new { Id = g.ID }, new { @style = "color: black; " })</h2>
+                    
+                </div>
+            }
+        </div>
+        <hr/>
+    }
+
+
+}
+<h2>Lista gier</h2>
+<hr/>
 <div class="container">
     @if(Model != null)
     {
@@ -47,7 +129,7 @@
                 <b>Data premiery:</b> @gra.Data_premiery <br/>
                 @if(gra.Recenzje != null)
                 {
-                    <text><b>Ilosc recenzji:@gra.Recenzje.Count </b></text>
+                    <text><b>Ilosc recenzji: @gra.Recenzje.Count </b></text>
                 }
                 else{ 
                     <text>Ilosc recenzji: 0</text>

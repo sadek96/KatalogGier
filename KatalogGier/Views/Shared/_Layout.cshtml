@@ -25,6 +25,17 @@
 
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                 </ul>
+                <div class="pull-right">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "navbar-form" ,role="search"}))
+                {
+                <div class="input-group">
+                    @Html.TextBox("text", null, new { @class = "form-control" })
+                    <div class="input-group-btn">
+                        <button type="submit" value="Szukaj" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+                }
+                </div>
             </div>
         </div>
     </div>
@@ -32,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year — Dzieło Kamil Purta, Joanna Sikorska, Danil Sadowski</p>
+            <p>&copy; @DateTime.Now.Year — Dzieło Kamil Purta, Joanna Sikorska, Daniel Sadowski</p>
         </footer>
     </div>
 
