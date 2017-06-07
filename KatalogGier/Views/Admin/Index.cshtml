@@ -1,0 +1,64 @@
+﻿@model IEnumerable<KatalogGier.Models.Gra>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>Tytuł</th>
+        <th>Gatunki</th>
+        <th>Producent</th>
+        <th>Wydawca</th>
+        <th>Data_premiery</th>
+        <th>Platformy</th>
+        <th>Zdjecie</th>
+        <th>Akcja</th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@item.Tytul</td>
+        <td>
+            @foreach (var g in item.Gatunek)
+        {
+            <text>@Html.ActionLink(@g, "DeleteGatunek", "Admin",new { id = item.ID, text=@g },null) ,</text>
+}
+        @using (Html.BeginForm("AddGatunek", "Admin", new { id = item.ID }, FormMethod.Get))
+        {
+            @Html.TextBox("text", null);
+            <button class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+        }
+        </td>
+        <td>@item.Producent</td>
+        <td>@item.Wydawca</td>
+        <td>@item.Data_premiery</td>
+        <td>
+            @foreach (var p in item.Platforma)
+            {
+                
+            <text>@Html.ActionLink(@p,"DeletePlatforma","Admin", new { id = item.ID, text = @p }, null) ,</text>
+        }
+            @using (Html.BeginForm("AddPlatforma", "Admin", new { id = item.ID }, FormMethod.Get))
+            {
+                @Html.TextBox("text", null);
+                <button class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+            }
+            
+        </td>
+        <td>@item.Zdjecie</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit","Admin", new { id = item.ID},null) |
+            @Html.ActionLink("Delete", "Delete","Admin", new { id = item.ID},null)
+        </td>
+    </tr>
+}
+
+</table>

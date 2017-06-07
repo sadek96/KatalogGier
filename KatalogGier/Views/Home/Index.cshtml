@@ -58,19 +58,26 @@
         <h1><b>TOP 3 GRY</b></h1>
 
         <div class="row">
+            
+            
             @foreach (int k in topPozycje)
             {
+                var imgPath = "/Content/Images/";
                 var g = Model.ElementAt(k);
 
                 <div class="col-md-4 col-centered">
                     
                         @if (g.Zdjecie != null)
                         {
-                            <img src="@g.Zdjecie"/>
+                            var path = imgPath + g.Zdjecie;
+                            <img src="@path"/>
                         }
                         else
                         {
-                            <img src="/Content/Images/Empty.jpg" />
+                            
+                            var empty = "Empty.jpg";
+                            var path = imgPath + empty;
+                            <img src="@path" />
                         }
                         <br/>
                     <h2 style="text-align:center">@Html.ActionLink(g.Tytul, "About", "Home", new { Id = g.ID }, new { @style = "color: black; " })</h2>
@@ -88,16 +95,20 @@
 <div class="container">
     @if(Model != null)
     {
+        var imgPath = "/Content/Images/";
         foreach (var gra in Model)
         {
             <div class="row">
                 @if (gra.Zdjecie != null)
                 {
-                    <img src="@gra.Zdjecie" style="float:left; margin: 10px;" />
+                    var path = imgPath + gra.Zdjecie;
+                    <img src="@path" style="float:left; margin: 10px;" />
                 }
                 else
                 {
-                    <img src="/Content/Images/Empty.jpg" style="float:left; margin: 10px;" />
+                    var empty = "Empty.jpg";
+                    var path = imgPath + empty;
+                    <img src="path" style="float:left; margin: 10px;" />
                 }
 
                 <p>

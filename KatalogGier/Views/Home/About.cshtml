@@ -5,14 +5,17 @@
 
 @if (Model.Gra != null)
 {
+    var imgPath = "/Content/Images/";
     <div class="row">
         @if (Model.Gra.Zdjecie != null)
         {
-            <img src="@Model.Gra.Zdjecie" style="float:left; margin: 10px;" />
+            var path = imgPath + Model.Gra.Zdjecie;
+            <img src="@path" style="float:left; margin: 10px;" />
         }
         else
         {
-            <img src="/Content/Images/Empty.jpg" style="float:left; margin: 10px;" />
+            var path = imgPath + "Empty.jpg";
+            <img src="path" style="float:left; margin: 10px;" />
         }
 
         <p>
