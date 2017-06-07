@@ -7,6 +7,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization.Attributes;
 using KatalogGier.Models;
+using System.Globalization;
 
 namespace KatalogGier.Controllers
 {
@@ -49,8 +50,12 @@ namespace KatalogGier.Controllers
         }
 
         [HttpPost]
-        public ActionResult About(AddRecenzjeModel model)
+        public ActionResult About(AddRecenzjeModel model,string id)
         {
+            model.Gra = Context.GetGameById(new ObjectId(id));
+
+            model.Recenzja.Data_wstawienia = DateTime.Now.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+
             model.Gra.Recenzje.Add(model.Recenzja);
 
             Context.Update(model.Gra.ID, model.Gra);

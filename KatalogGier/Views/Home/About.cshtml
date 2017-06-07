@@ -17,7 +17,7 @@
 
         <p>
             <div style="background-color:lavender">
-                 <h2><b> @Model.Tytul</b> </h2>
+                 <h2><b> @Model.Gra.Tytul</b> </h2>
             </div>
         </p>
         @if (Model.Gra.Platforma != null)
@@ -88,8 +88,8 @@
 
     <h2>Dodaj własną recenzję</h2>
 
-    <div>
-        @using (Html.BeginForm("About","Home",FormMethod.Post,new { addRecenzjeModel = Model }))
+    <div class="container">
+        @using (Html.BeginForm("About","Home",new { id = ViewData.Model.Gra.ID },FormMethod.Post))
         {
 
             @Html.ValidationSummary(true)
@@ -101,14 +101,7 @@
                     @Html.TextBoxFor(model => model.Recenzja.Nazwa_uzytkownika, new { autofocus = "autofocus", @class = "form-control"})
                 </div>
                 <div>
-                    @Html.LabelFor(model => model.Recenzja.Data_wstawienia, new { @class = "control-label" })
-                </div>
-                <div>
-                    @Html.TextBoxFor(model => model.Recenzja.Data_wstawienia, "{ dd/MM/yyyy }", new { @class = "form-control", data_mask = "date" })
-                    @Html.ValidationMessageFor(model => model.Recenzja.Data_wstawienia)
-                </div>
-                <div>
-                    @Html.LabelFor(model => model.Recenzja.Ocena, new { @class = "control-label" })
+                    @Html.LabelFor(model => model.Recenzja.Ocena, new { @class = "control-label" ,required="required"})
                 </div>
                 <div>
                     @Html.TextBoxFor(model => model.Recenzja.Ocena, new { type = "number", min = "1", max = "10", step = "1", @class = "form-control" })
@@ -117,7 +110,7 @@
                     @Html.LabelFor(model => model.Recenzja.Tresc, new { @class = "control-label" })
                 </div>
                 <div>
-                    @Html.TextAreaFor(model => model.Recenzja.Tresc, new { @class = "form-control" })
+                    @Html.TextAreaFor(model => model.Recenzja.Tresc, new { @class = "form-control",required="required"})
                 </div>
 
                 <input type="submit" value="Dodaj" class="btn" />
