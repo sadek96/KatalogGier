@@ -12,12 +12,12 @@
         }
         else
         {
-            <img src="/Content/Images/Black.jpg" width="300" style="float:left; margin: 10px;" />
+            <img src="/Content/Images/Black.jpg" style="float:left; margin: 10px;" />
         }
 
         <p>
             <div style="background-color:lavender">
-                <h2>@Html.ActionLink(Model.Tytul, "Recenzje", "Home", new { id = Model.ID }, new { @style = "color: black;" })</h2>
+                <h2>@Html.ActionLink(Model.Tytul, "About", "Home", new { Id = Model.ID }, new { @style = "color: black;" })</h2>
             </div>
         </p>
         @if (Model.Platforma != null)
@@ -65,6 +65,7 @@
                 Ocena:  @r.Ocena    <br/>
                 Tresc:  @r.Tresc    <br/>
             </div>
+            <div class="divider"/>
         }
     }
 }

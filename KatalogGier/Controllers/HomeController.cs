@@ -14,12 +14,12 @@ namespace KatalogGier.Controllers
     {
         public KatalogGierRepository Context = new KatalogGierRepository();
 
-       
-      //  string a = "~/Content/Images/Heroes.jpg";
+
+        //  string a = "~/Content/Images/Heroes.jpg";
         public ActionResult Index()
         {
 
-            return View("Index",Context.GetAllGames());
+            return View("Index", Context.GetAllGames());
         }
 
         public ActionResult Contact()
@@ -33,7 +33,8 @@ namespace KatalogGier.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View(Context.GetGameByTitle(Id));
+                return View(Context.GetGameById(new ObjectId(Id)));
+
         }
     }
 }
