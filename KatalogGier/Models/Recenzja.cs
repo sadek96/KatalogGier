@@ -9,13 +9,16 @@ namespace KatalogGier.Models
 {
     public class Recenzja
     {
+        [BsonRequired]
         [BsonElement("nazwa_uzytkownika")]
         public string Nazwa_uzytkownika { get; set; }
 
         [BsonElement("data_wstawienia")]
+        [BsonRequired]
         public string Data_wstawienia { get; set; }
 
         [BsonElement("ocena")]
+        [BsonRequired]
         public int Ocena { get; set; }
 
         [BsonElement("tresc")]

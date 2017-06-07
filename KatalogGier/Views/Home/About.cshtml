@@ -1,14 +1,14 @@
-﻿@model KatalogGier.Models.Gra
+﻿@model KatalogGier.Models.AddRecenzjeModel
 @{
     ViewBag.Title = "About";
 }
 
-@if (Model != null)
+@if (Model.Gra != null)
 {
     <div class="row">
-        @if (Model.Zdjecie != null)
-                {
-            <img src="@Model.Zdjecie" style="float:left; margin: 10px;" />
+        @if (Model.Gra.Zdjecie != null)
+        {
+            <img src="@Model.Gra.Zdjecie" style="float:left; margin: 10px;" />
         }
         else
         {
@@ -17,32 +17,32 @@
 
         <p>
             <div style="background-color:lavender">
-                <h2>@Html.ActionLink(Model.Tytul, "About", "Home", new { Id = Model.ID }, new { @style = "color: black;" })</h2>
+                <h2>@Html.ActionLink(Model.Gra.Tytul, "About", "Home", new { Id = Model.Gra.ID }, new { @style = "color: black;" })</h2>
             </div>
         </p>
-        @if (Model.Platforma != null)
+        @if (Model.Gra.Platforma != null)
         {
             <div>
                 Platforma:
-                @foreach (var g in Model.Platforma)
+                @foreach (var g in Model.Gra.Platforma)
                 {
                     <text>@g ,</text>
                 }
             </div>
         }
-        @if (Model.Gatunek != null)
+        @if (Model.Gra.Gatunek != null)
         {
             <div>
                 Gatunek:
-                @foreach (var g in Model.Gatunek)
+                @foreach (var g in Model.Gra.Gatunek)
                 {
                     <text>@g ,</text>
                 }
             </div>
         }
-        Producent: @Model.Producent <br />
-        Wydawca: @Model.Wydawca <br />
-        Data premiery: @Model.Data_premiery <br />
+        Producent: @Model.Gra.Producent <br />
+        Wydawca: @Model.Gra.Wydawca <br />
+        Data premiery: @Model.Gra.Data_premiery <br />
     </div>
 
     <p>
@@ -51,13 +51,13 @@
         </div>
     </p>
 
-    if (Model.Recenzje == null)
+    if (Model.Gra.Recenzje == null)
     {
         <div style="align-content:center">Brak recenzji do tej gry</div>
     }
     else
     {
-        foreach(var r in Model.Recenzje)
+        foreach(var r in Model.Gra.Recenzje)
         {
             <div class="row; container">
                 Nazwa użytkownika:  @r.Nazwa_uzytkownika    <br/>
@@ -69,6 +69,46 @@
             <hr/>
         }
     }
+
+
+    <h2>Dodaj własną recenzję</h2>
+
+    <div>
+        @using (Html.BeginForm("About","Home",FormMethod.Post,new { addRecenzjeModel = Model }))
+        {
+
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <div>
+                    @Html.LabelFor(model => model.Recenzja.Nazwa_uzytkownika, new { @class = "control-label" })
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Recenzja.Nazwa_uzytkownika, new { autofocus = "autofocus", @class = "form-control"})
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.Recenzja.Data_wstawienia, new { @class = "control-label" })
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Recenzja.Data_wstawienia, "{ dd/MM/yyyy }", new { @class = "form-control", data_mask = "date" })
+                    @Html.ValidationMessageFor(model => model.Recenzja.Data_wstawienia)
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.Recenzja.Ocena, new { @class = "control-label" })
+                </div>
+                <div>
+                    @Html.TextBoxFor(model => model.Recenzja.Ocena, new { type = "number", min = "1", max = "10", step = "1", @class = "form-control" })
+                </div>
+                <div>
+                    @Html.LabelFor(model => model.Recenzja.Tresc, new { @class = "control-label" })
+                </div>
+                <div>
+                    @Html.TextAreaFor(model => model.Recenzja.Tresc, new { @class = "form-control" })
+                </div>
+
+                <input type="submit" value="Dodaj" class="btn" />
+            </fieldset>
+        }
+    </div>
 }
 else
 {

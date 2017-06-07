@@ -31,10 +31,31 @@ namespace KatalogGier.Controllers
 
         public ActionResult About(string Id)
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Recenzje Gry";
+            if (Id == null||Id == "")
+            {
+                return View(new AddRecenzjeModel() {
+            
+                    Gra = null,
+                    Recenzja = new Recenzja()
+                });
+            }
+            return View(new AddRecenzjeModel()
+            {
+                Gra = Context.GetGameById(new ObjectId(Id)),
+                Recenzja = new Recenzja()
+            });
 
-                return View(Context.GetGameById(new ObjectId(Id)));
+        }
 
+        [HttpPost]
+        public ActionResult About(AddRecenzjeModel model)
+        {
+            model.Gra.Recenzje.Add(model.Recenzja);
+
+            Context.Update(model.Gra.ID, model.Gra);
+
+            return RedirectToAction("About", model.Gra.ID);
         }
     }
 }
