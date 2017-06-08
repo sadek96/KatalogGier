@@ -29,7 +29,6 @@
             {
                 srednieOceny[i] = 0.0;
             }
-
         }
         
         topOceny = srednieOceny.OrderByDescending(i1 => i1).Take(3).ToArray();
@@ -45,11 +44,11 @@
                     {
                         topPozycje[0] = j;
                     }
-                    else if (topPozycje[1] == 0&&count>0)
+                    else if (topPozycje[1] == 0 && count>0)
                     {
                         topPozycje[1] = j;
                     }
-                    else if(topPozycje[2] == 0&&count>0)
+                    else if(topPozycje[2] == 0 && count>0)
                     {
                         topPozycje[2] = j;
                     }

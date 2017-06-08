@@ -76,7 +76,63 @@ namespace KatalogGier.Models
                     "PC","PS4","XONE"
                 },
                 Zdjecie = "MountAndBladeWarbandPC.jpg"
+            },
+
+            new Gra()
+            {
+                ID = ObjectId.GenerateNewId(),
+                Tytul ="Warcarft 3",
+                Gatunek = new string[]
+                {
+                    "RTS","Fantasy"
+                },
+                Producent = "Blizzard Entertainment",
+                Wydawca = "Blizzard Entertainment",
+                Data_premiery = "03/07/2002",
+                Platforma = new string[]
+                {
+                    "PC","PS1","Mac OS"
+                },
+                Recenzje = new List<Recenzja>()
+                {
+                    new Recenzja()
+                    {
+                        Nazwa_uzytkownika = "Patys",
+                        Data_wstawienia = DateTime.Now.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture),
+                        Ocena = 7,
+                        Tresc = "Wspaniały RTS"
+                    }
+                }
+            },
+            new Gra()
+            {
+                ID = ObjectId.GenerateNewId(),
+                Tytul ="Gothic",
+                Gatunek = new string[]
+                {
+                    "RPG","Fantasy"
+                },
+                Producent = "Piranha Bytes",
+                Wydawca = "JoWooD Entertainment",
+                Data_premiery = "15/03/2001",
+                Platforma = new string[]
+                {
+                    "PC"
+                },
+                Zdjecie="Gothic.jpg",
+                Recenzje = new List<Recenzja>()
+                {
+                    new Recenzja()
+                    {
+                        Nazwa_uzytkownika = "Zdzisław",
+                        Data_wstawienia = DateTime.Now.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture),
+                        Ocena = 10,
+                        Tresc = "Spełnienie marzeń"
+                    }
+                }
             }
+
+
         };
 
         #endregion
@@ -170,7 +226,7 @@ namespace KatalogGier.Models
 
         public List<Gra> SearchForGames(string text)
         {
-
+            GetAllGames();
 
             List<Gra> list = new List<Gra>();
 
