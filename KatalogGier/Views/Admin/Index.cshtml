@@ -27,29 +27,45 @@
     <tr>
         <td>@item.Tytul</td>
         <td>
-            @foreach (var g in item.Gatunek)
-        {
-            <text>@Html.ActionLink(@g, "DeleteGatunek", "Admin",new { id = item.ID, text=@g },null) ,</text>
-}
-        @using (Html.BeginForm("AddGatunek", "Admin", new { id = item.ID }, FormMethod.Get))
-        {
-            @Html.TextBox("text", null);
-            <button class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
-        }
+            @if(item.Gatunek != null)
+            {
+                foreach (var g in item.Gatunek)
+                {
+                <text>@Html.ActionLink(@g, "DeleteGatunek", "Admin",new { id = item.ID, text=@g },null) ,</text>
+                }
+            }
+
+            @using (Html.BeginForm("AddGatunek", "Admin", new { id = item.ID }, FormMethod.Get))
+            {
+                <div class="input-group">
+                    @Html.TextBox("text", null, new { @class = "form-control" })
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                    </div>
+                </div>
+            }
         </td>
         <td>@item.Producent</td>
         <td>@item.Wydawca</td>
         <td>@item.Data_premiery</td>
         <td>
-            @foreach (var p in item.Platforma)
+            @if (item.Platforma != null)
             {
+                foreach (var p in item.Platforma)
+                {
                 
-            <text>@Html.ActionLink(@p,"DeletePlatforma","Admin", new { id = item.ID, text = @p }, null) ,</text>
-        }
+                    <text>@Html.ActionLink(@p,"DeletePlatforma","Admin", new { id = item.ID, text = @p }, null) ,</text>
+                }
+            }
+
             @using (Html.BeginForm("AddPlatforma", "Admin", new { id = item.ID }, FormMethod.Get))
             {
-                @Html.TextBox("text", null);
-                <button class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                <div class="input-group">
+                    @Html.TextBox("text", null,new {@class="form-control"})
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i></button>
+                    </div>
+                </div>
             }
             
         </td>

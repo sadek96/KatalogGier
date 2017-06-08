@@ -25,7 +25,7 @@ namespace KatalogGier.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Skontaktuj się z nami";
 
             return View();
         }
@@ -56,7 +56,13 @@ namespace KatalogGier.Controllers
 
             model.Recenzja.Data_wstawienia = DateTime.Now.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            model.Gra.Recenzje.Add(model.Recenzja);
+            if (model.Gra.Recenzje != null)
+                model.Gra.Recenzje.Add(model.Recenzja);
+            else
+                model.Gra.Recenzje = new List<Recenzja>()
+                {
+                    model.Recenzja
+                };
 
             Context.Update(model.Gra.ID, model.Gra);
 

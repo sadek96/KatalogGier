@@ -8,13 +8,14 @@
     var param = Request.Params["text"];
     if (param == null || param == "")
     {
-        var srednieOceny = new int[Model.Count()];
-        var topOceny = new int[3];
+        var srednieOceny = new double[Model.Count()];
+        var topOceny = new double[3];
         var topPozycje = new int[3];
         for (var i = 0; i < Model.Count(); i++)
         {
             var count = 0;
             var sum = 0;
+
             if (Model.ElementAt(i).Recenzje != null)
             {
                 foreach (var recenzyja in Model.ElementAt(i).Recenzje)
@@ -22,36 +23,38 @@
                     count++;
                     sum += recenzyja.Ocena;
                 }
-                srednieOceny[i] = sum / count;
+                srednieOceny[i] = (double) sum / count;
             }
             else
             {
-                srednieOceny[i] = 0;
+                srednieOceny[i] = 0.0;
             }
 
         }
-
+        
         topOceny = srednieOceny.OrderByDescending(i1 => i1).Take(3).ToArray();
 
         for (var j = 0; j < srednieOceny.Length; j++)
         {
+            var count = 0;
             foreach (int o in topOceny)
             {
                 if (srednieOceny[j] == o)
                 {
-                    if (topPozycje[0] == 0)
+                    if (count==0)
                     {
                         topPozycje[0] = j;
                     }
-                    else if (topPozycje[1] == 0)
+                    else if (topPozycje[1] == 0&&count>0)
                     {
                         topPozycje[1] = j;
                     }
-                    else
+                    else if(topPozycje[2] == 0&&count>0)
                     {
                         topPozycje[2] = j;
                     }
                 }
+                count++;
             }
         }
 
@@ -108,7 +111,7 @@
                 {
                     var empty = "Empty.jpg";
                     var path = imgPath + empty;
-                    <img src="path" style="float:left; margin: 10px;" />
+                    <img src="@path" style="float:left; margin: 10px;" />
                 }
 
                 <p>
@@ -143,8 +146,8 @@
                     <text><b>Ilosc recenzji: @gra.Recenzje.Count </b></text>
                 }
                 else{ 
-                    <text>Ilosc recenzji: 0</text>
-                }
+                    <text><b>Ilosc recenzji: 0</b></text>
+}
             </div>
 
             <hr/>

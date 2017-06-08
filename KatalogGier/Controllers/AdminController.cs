@@ -56,11 +56,21 @@ namespace KatalogGier.Controllers
         {
             Gra g = Context.GetGameById(new ObjectId(id));
 
-            string[] gatunki = g.Gatunek;
+            if (g.Gatunek != null) { 
+                string[] gatunki = g.Gatunek;
 
-            string[] array = { text };
+                string[] array = { text };
 
-            g.Gatunek = gatunki.Concat(array).ToArray();
+                g.Gatunek = gatunki.Concat(array).ToArray();
+            }
+            else
+            {
+                g.Gatunek = new string[]
+                {
+                    text
+                };
+            }
+                
 
             Context.Update(new ObjectId(id), g);
             
@@ -112,11 +122,21 @@ namespace KatalogGier.Controllers
         {
             Gra g = Context.GetGameById(new ObjectId(id));
 
-            string[] gatunki = g.Platforma;
+            if(g.Platforma!= null)
+            { 
+                string[] gatunki = g.Platforma;
 
-            string[] array = { text };
+                string[] array = { text };
 
-            g.Platforma = gatunki.Concat(array).ToArray();
+                g.Platforma = gatunki.Concat(array).ToArray();
+            }
+            else
+            {
+                g.Platforma = new string[]
+                {
+                    text
+                };
+            }
 
             Context.Update(new ObjectId(id), g);
 
